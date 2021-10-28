@@ -1,32 +1,93 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+	<v-app>
+		<Nav
+			:navLinks="navLinks"
+			:background="'#419584'"
+			:imagePath="require('./assets/logo.png')"
+			:hoverBackground="''"
+			:linkColor="'#fff'"
+		/>
+		<Bar
+			:barLinks="barLinks"
+			:background="'#fff'"
+			:barColor="'#000'"
+			:hoverBackground="'#41B883'"
+		/>
+
+		<v-main>
+			<router-view />
+		</v-main>
+		<Footer />
+	</v-app>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+	import Nav from "./components/Nav.vue";
+	import Bar from "./components/Bar.vue";
+	import Footer from "./components/Footer.vue";
 
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+	export default {
+		name: "App",
+		components: {
+			Nav,
+			Bar,
+			Footer,
+		},
+		data: () => ({
+			navLinks: [
+				{
+					text: "Sobre",
+					path: "/about",
+					icon: "",
+				},
+				{
+					text: "Contato",
+					path: "/Contact",
+					icon: "",
+				},				
+			],
+			barLinks: [
+				{
+					text: "Novidades",
+					path: "/Novelty",
+					icon: "",
+				},
+				{
+					text: "Infantil",
+					path: "/Childrens",
+					icon: "",
+				},
+				{
+					text: "Moda íntima",
+					path: "/Underwear",
+					icon: "",
+				},
+				{
+					text: "Calçados",
+					path: "/Shoes",
+					icon: "",
+				},
+				{
+					text: "Acessórios",
+					path: "/Props",
+					icon: "",
+				},
+				{
+					text: "Cuidados",
+					path: "/Care",
+					icon: "",
+				},
+				{
+					text: "Perfumaria",
+					path: "/Perfumery",
+					icon: "",
+				},
+				{
+					text: "Livraria",
+					path: "/Bookstore",
+					icon: "",
+				},
+			],
+		}),
+	};
+</script>
