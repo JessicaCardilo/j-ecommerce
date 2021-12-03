@@ -13,31 +13,20 @@
 					:cols="card.flex"
 					:class="card.class || 'pa-4'"
 				>
-					<v-card>
+					<v-card
+						:to="{ name: 'ItemDetails', params: { item: JSON.stringify(card) } }"
+						target="_blank"
+					>
 						<v-img
 							:src="card.src"
 							class="white--text align-end"
 							gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
 							:height="height"
 						>
-							<v-btn icon>
+							<v-btn icon to="/">
 								<v-icon>mdi-heart</v-icon>
 							</v-btn>
 						</v-img>
-
-						<!-- <v-card-actions> -->
-						<!-- <v-card-title class="card-title" v-text="card.title"></v-card-title> -->
-						<!-- <v-card-text> -->
-						<!-- <v-card-title v-text="'R$' + card.price"></v-card-title> -->
-						<!-- <div class="my-4 text-4">R$ {{ card.price }}</div> -->
-						<!-- <div class="my-4 text-Subtitle-1"></div> -->
-						<!-- <v-card-subtitle>ou 2x de R$ 12,00</v-card-subtitle> -->
-						<!-- </v-card-text> -->
-						<!-- </v-card-actions> -->
-						<!-- <v-btn class="btn-add-to-bag">
-							<v-icon> mdi-shopping-outline </v-icon>
-							Adicionar à sacola
-						</v-btn> -->
 					</v-card>
 					<div class="item-description">
 						<div class="item-title">
@@ -70,7 +59,6 @@
 		methods: {
 			installmentCalc: function (card) {
 				if (card.price && card.installment) {
-
 					let nav = (card.price.replace(",", ".") / card.installment).toFixed(2);
 					return nav;
 				}
